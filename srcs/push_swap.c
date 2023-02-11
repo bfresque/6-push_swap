@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/10 21:42:51 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/11 10:59:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_pile *addAtList(t_pile *pile, int data, int pos)
 	return (pile);
 }
 
-t_pile	*ft_first_cell(t_pile *pile)
+int	ft_first_cell(t_pile *pile)
 {
 	t_pile *head = pile;
 	int first_data;
@@ -64,21 +64,12 @@ t_pile	*ft_first_cell(t_pile *pile)
 	return (first_data);
 }
 
-void	ft_free_at_pos(t_pile *pile, int pos)
-{
-	t_pile	*position = pile;
-	pile = pile->next;
-	free(position);
-}
-
-void	ft_push_a_to_b(int ac, t_pile *pile)
-{
-	t_pile	*position = pile->pile_a;
-	int tmp = ft_first_cell(pile->pile_a);
-	pile->pile_b = addAtList(pile->pile_b, tmp, 0);
-	pile->pile_a = pile->pile_a->next;
-	free(position);
-}
+// void	ft_free_at_pos(t_pile *pile, int pos)
+// {
+// 	t_pile	*position = pile;
+// 	pile = pile->next;
+// 	free(position);
+// }
 
 void	ft_put_in_pile(int ac, char **av, t_pile *pile)   //fait
 {
@@ -106,18 +97,44 @@ void freeList(t_pile *pile)
 	printList(pile);
 }
 
-void	swap_pile_a(t_pile *pile)
+void	pb(t_pile *pile)
+{
+	int tmp;
+	t_pile	*position = NULL;
+
+	position = pile->pile_a;
+	tmp = ft_first_cell(pile->pile_a);
+	pile->pile_b = addAtList(pile->pile_b, tmp, 0);
+	pile->pile_a = pile->pile_a->next;
+	free(position);
+}
+
+void	pa(t_pile *pile)
+{
+	int tmp;
+	t_pile	*position = NULL;
+
+	position = pile->pile_b;
+	tmp = ft_first_cell(pile->pile_b);
+	pile->pile_a = addAtList(pile->pile_a, tmp, 0);
+	pile->pile_b = pile->pile_b->next;
+	free(position);
+}
+
+void	sa(t_pile *pile)
 {
 	t_pile *tmp = NULL;
+
 	tmp = pile->pile_a;
 	pile->pile_a = tmp->next;
 	tmp->next = pile->pile_a->next;
 	pile->pile_a->next = tmp;
 }
 
-void	swap_pile_b(t_pile *pile)
+void	sb(t_pile *pile)
 {
 	t_pile *tmp = NULL;
+
 	tmp = pile->pile_b;
 	pile->pile_b = tmp->next;
 	tmp->next = pile->pile_b->next;
@@ -133,10 +150,12 @@ int main(int ac, char **av)
 
 	ft_put_in_pile(ac, av, &pile);
 
-	ft_push_a_to_b(ac, &pile);
-	swap_pile_a(&pile);
-	ft_push_a_to_b(ac, &pile);
-	swap_pile_b(&pile);
+	pb(&pile);
+	// sa(&pile);
+	pb(&pile);
+	// sb(&pile);
+	pa(&pile);
+	pa(&pile);
 	
 	printf("Pile_a a la fin\n");
 	printList(pile.pile_a);
