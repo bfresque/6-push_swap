@@ -6,119 +6,143 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/10 14:59:47 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/10 21:42:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int check_arg(int ac, char **av)
+int isEmptyList(t_pile *pile)
+{
+	return (pile == NULL);
+}
+
+void	printList(t_pile *pile)   //fait
+{
+	while (pile)
+	{
+		ft_printf("%d\n", pile->data);
+		pile = pile->next;
+	}
+}
+
+t_pile *addAtList(t_pile *pile, int data, int pos)
 {
 	int i;
-	int j;
-	int larg;
-	char *arg;
+	t_pile *precedent;
+	t_pile *current;
+	t_pile *cell;
 
-	i = 1;
+	precedent = pile;
+	current = pile;
+	cell = ft_lstnew(data);
+	i = 0;
+	if(isEmptyList(pile))
+		return (cell);
+	if(pos == 0)
+	{
+		cell->next = pile;
+		return (cell);
+	}
+	i = 0;
+	while (i < pos)
+	{
+		i++;
+		precedent = current;
+		current = current->next;
+	}
+	precedent->next = cell;
+	cell->next = current;
+	return (pile);
+}
+
+t_pile	*ft_first_cell(t_pile *pile)
+{
+	t_pile *head = pile;
+	int first_data;
+	first_data = head->data;
+	return (first_data);
+}
+
+void	ft_free_at_pos(t_pile *pile, int pos)
+{
+	t_pile	*position = pile;
+	pile = pile->next;
+	free(position);
+}
+
+void	ft_push_a_to_b(int ac, t_pile *pile)
+{
+	t_pile	*position = pile->pile_a;
+	int tmp = ft_first_cell(pile->pile_a);
+	pile->pile_b = addAtList(pile->pile_b, tmp, 0);
+	pile->pile_a = pile->pile_a->next;
+	free(position);
+}
+
+void	ft_put_in_pile(int ac, char **av, t_pile *pile)   //fait
+{
+	int i = 1;
+	int j = 0;
+	int cur = 0;
 	while (i < ac)
 	{
-		arg = av[i];
-		j = 0;
-		larg = ft_strlen(arg);
-		while (j < larg)
-		{
-			if (ft_isdigit(arg[j]) == 0)
-				return (0);
-			j++;
-		}
+		cur = atoi(av[i]);
+		pile->pile_a = addAtList(pile->pile_a, cur, j);
 		i++;
+		j++;
 	}
-	return (1);
 }
+
+void freeList(t_pile *pile)
+{
+	t_pile *tmp = NULL;
+	while(pile)
+	{
+		tmp = pile->next;
+		free(pile);
+		pile = tmp;
+	}
+	printList(pile);
+}
+
+void	swap_pile_a(t_pile *pile)
+{
+	t_pile *tmp = NULL;
+	tmp = pile->pile_a;
+	pile->pile_a = tmp->next;
+	tmp->next = pile->pile_a->next;
+	pile->pile_a->next = tmp;
+}
+
+void	swap_pile_b(t_pile *pile)
+{
+	t_pile *tmp = NULL;
+	tmp = pile->pile_b;
+	pile->pile_b = tmp->next;
+	tmp->next = pile->pile_b->next;
+	pile->pile_b->next = tmp;
+}
+
 
 int main(int ac, char **av)
 {
-	t_list2 *pile_a = NULL;
-	t_list2 *pile_b = NULL;
+	t_pile pile;
+	pile.pile_b = NULL;
+	pile.pile_a = NULL;
 
-	int i = 1;
-	int j = 0;
-	int cur = 0;
-	if (check_arg(ac, av) == 0)
-	{
-		ft_printf("Error : Arguments aren't some numbers");
-		return(0);
-	}
-	while (i < ac)
-	{
-		cur = atoi(av[i]);
-		pile_a = addAtList(pile_a, cur, j);
-		i++;
-		j++;
-	}
-	if (isEmptyList(pile_a) == 1)
-	{
-		ft_printf("Error : List empty");
-		return(0);
-	}
-	ft_printf("\n----------debut pile a-----------\n");
-	printList(pile_a);
-	ft_printf("-----------fin pile a------------\n\n");
-	// printf("\nIl y a : %d éléments dans la liste chainée\n\n", ft_lstsize(pile_a));
-	ft_push_a_to_b(pile_a, pile_b);
-	// pile_a = ft_free_at_pos(pile_a, 0);
-	// setAt(list, 150, 1);
-	// printf("L'élément position 1 sera dorénavant : %d \n\n", getAt(list, 1));
-	
-	ft_printf("\n----------debut pile b-----------\n");
-	printList(pile_b);
-	ft_printf("-----------fin pile b------------\n\n");
-	
-	
-	ft_printf("\n----------debut swap a-----------\n");
-	pile_a = swap_a(pile_a);
-	ft_printf("\npile a : \n");
-	printList(pile_a);
-	ft_printf("\npile b : \n");
-	printList(pile_b);
-	ft_printf("-----------fin swap a------------\n\n");
-	
+	ft_put_in_pile(ac, av, &pile);
 
-	pile_b = freeList(pile_b);
-	pile_a = freeList(pile_a);
+	ft_push_a_to_b(ac, &pile);
+	swap_pile_a(&pile);
+	ft_push_a_to_b(ac, &pile);
+	swap_pile_b(&pile);
+	
+	printf("Pile_a a la fin\n");
+	printList(pile.pile_a);
+	printf("Pile_b a la fin\n");
+	printList(pile.pile_b);
+
+	freeList(pile.pile_a);
+	freeList(pile.pile_b);
 }
-
-/*int main(int ac, char **av)
-{
-	t_list2 *a = NULL;
-	list->b = NULL;
-
-	int i = 1;
-	int j = 0;
-	int cur = 0;
-	if (check_arg(ac, av) == 0)
-	{
-		ft_printf("Error : Arguments aren't some numbers");
-		return(0);
-	}
-	while (i < ac)
-	{
-		cur = atoi(av[i]);
-		list->a = addAtList(list->a, cur, j);
-		i++;
-		j++;
-	}
-	if (isEmptyList(list->a) == 1)
-	{
-		ft_printf("Error : List empty");
-		return(0);
-	}
-	printList(list->a);
-	printf("\nIl y a : %d éléments dans la liste chainée\n\n", ft_lstsize(list->a));
-	// setAt(list, 150, 1);
-	// printf("L'élément position 1 sera dorénavant : %d \n\n", getAt(list, 1));
-	// printList(list);
-	list->a = swap_a(list->a);
-	printList(list->a);
-	list->a = freeList(list->a);
-}*/
