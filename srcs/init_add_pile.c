@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 13:44:56 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:12:38 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,18 @@ void	ft_free_pile(t_pile *pile)
 		pile = tmp;
 	}
 	ft_print_pile(pile);
+}
+
+t_pile	*ft_delete_last_cell(t_pile *pile)
+{
+	t_pile *prev = NULL;
+	t_pile *curr = pile;
+	while (curr->next != NULL)
+	{
+		prev = curr;
+		curr = curr->next;
+	}
+	free(curr);
+	prev->next = NULL;
+	return pile;
 }

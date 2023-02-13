@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 14:07:52 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:14:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int main(int ac, char **av)
 	pile.pile_a = NULL;
 
 	ft_put_in_pile(ac, av, &pile);
+
+
+	
+	ft_reverse_rotate_a(&pile);
+	printf(CYAN"Pile_A\n");
+	ft_print_pile(pile.pile_a);
+	printf("Pile_B\n");
+	ft_print_pile(pile.pile_b);
 
 	ft_push_a(&pile);
 	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
@@ -53,14 +61,19 @@ int main(int ac, char **av)
 	ft_print_pile(pile.pile_b);
 	ft_printf("%s*****************%s\n", RED, RESET);
 
-
-	ft_rotate_b(&pile);
-	ft_printf("%s******ROTATE_B******%s\n", CYAN, RESET);
+	ft_reverse_rotate_b(&pile);
 	printf(CYAN"Pile_A\n");
 	ft_print_pile(pile.pile_a);
 	printf("Pile_B\n");
 	ft_print_pile(pile.pile_b);
-	ft_printf("%s*****************%s\n", CYAN, RESET);
+
+	// ft_rotate_b(&pile);
+	// ft_printf("%s******ROTATE_B******%s\n", CYAN, RESET);
+	// printf(CYAN"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", CYAN, RESET);
 
 	
 	// ft_swap_a(&pile);

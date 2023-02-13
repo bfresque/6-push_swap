@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 14:11:26 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:13:43 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_pile	*ft_new_cell(int data);
 t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos);
 void	ft_put_in_pile(int ac, char **av, t_pile *pile);
 void	ft_free_pile(t_pile *pile);
+t_pile	*ft_delete_last_cell(t_pile *pile);
 
 
 /*********************	push_swap.c	********************/
@@ -51,6 +52,12 @@ void	ft_free_pile(t_pile *pile);
 void	ft_push_a(t_pile *pile);
 void	ft_push_b(t_pile *pile);
 void	ft_ss(t_pile *pile);
+
+
+/*********************	rotate_inv.c	********************/
+void	ft_reverse_rotate_a(t_pile *pile);
+void	ft_reverse_rotate_b(t_pile *pile);
+void	ft_rrr(t_pile *pile);
 
 /*********************	rotate.c	********************/
 void	ft_rotate_a(t_pile *pile);
@@ -62,8 +69,9 @@ void	ft_swap_a(t_pile *pile);
 void	ft_swap_b(t_pile *pile);
 
 /*********************	utils.c	********************/
-int		ft_lst_size(t_pile *pile);
+int		ft_pile_size(t_pile *pile);
 int		ft_first_cell(t_pile *pile);
+int		ft_last_cell(t_pile *pile);
 int		ft_is_empty_pile(t_pile *pile);
 void	ft_print_pile(t_pile *pile);
 

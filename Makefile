@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/13 13:29:21 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/13 14:32:51 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRCS =	srcs/push_swap.c \
 		srcs/push.c \
 		srcs/utils.c \
 		srcs/rotate.c \
+		srcs/rotate_inv.c \
 
 OBJS = $(SRCS_LIB:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS:.c=.o)
 
