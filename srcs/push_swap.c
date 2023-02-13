@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/11 10:59:36 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 10:16:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void freeList(t_pile *pile)
 	printList(pile);
 }
 
-void	pb(t_pile *pile)
+void	push_a_to_b(t_pile *pile)
 {
 	int tmp;
 	t_pile	*position = NULL;
@@ -109,7 +109,7 @@ void	pb(t_pile *pile)
 	free(position);
 }
 
-void	pa(t_pile *pile)
+void	push_b_to_a(t_pile *pile)
 {
 	int tmp;
 	t_pile	*position = NULL;
@@ -150,17 +150,53 @@ int main(int ac, char **av)
 
 	ft_put_in_pile(ac, av, &pile);
 
-	pb(&pile);
-	// sa(&pile);
-	pb(&pile);
-	// sb(&pile);
-	pa(&pile);
-	pa(&pile);
-	
-	printf("Pile_a a la fin\n");
+	push_a_to_b(&pile);
+	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
+	printf(RED"Pile_A\n");
 	printList(pile.pile_a);
-	printf("Pile_b a la fin\n");
+	printf("Pile_B\n");
 	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", RED, RESET);
+
+	sa(&pile);
+	ft_printf("%s******SWAP_A******%s\n", GREEN, RESET);
+	printf(GREEN"Pile_A\n");
+	printList(pile.pile_a);
+	printf("Pile_B\n");
+	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", GREEN, RESET);
+
+	push_a_to_b(&pile);
+	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
+	printf(RED"Pile_A\n");
+	printList(pile.pile_a);
+	printf("Pile_B\n");
+	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", RED, RESET);
+
+	sb(&pile);
+	ft_printf("%s******SWAP_B******%s\n", BLUE, RESET);
+	printf(BLUE"Pile_A\n");
+	printList(pile.pile_a);
+	printf("Pile_B\n");
+	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", BLUE, RESET);
+
+	push_b_to_a(&pile);
+	ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
+	printf(YELLOW"Pile_A\n");
+	printList(pile.pile_a);
+	printf("Pile_B\n");
+	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", YELLOW, RESET);
+
+	push_b_to_a(&pile);
+	ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
+	printf(YELLOW"Pile_A\n");
+	printList(pile.pile_a);
+	printf("Pile_B\n");
+	printList(pile.pile_b);
+	ft_printf("%s*****************%s\n", YELLOW, RESET);
 
 	freeList(pile.pile_a);
 	freeList(pile.pile_b);
