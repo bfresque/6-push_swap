@@ -6,141 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 10:16:24 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:07:52 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int isEmptyList(t_pile *pile)
-{
-	return (pile == NULL);
-}
-
-void	printList(t_pile *pile)   //fait
-{
-	while (pile)
-	{
-		ft_printf("%d\n", pile->data);
-		pile = pile->next;
-	}
-}
-
-t_pile *addAtList(t_pile *pile, int data, int pos)
-{
-	int i;
-	t_pile *precedent;
-	t_pile *current;
-	t_pile *cell;
-
-	precedent = pile;
-	current = pile;
-	cell = ft_lstnew(data);
-	i = 0;
-	if(isEmptyList(pile))
-		return (cell);
-	if(pos == 0)
-	{
-		cell->next = pile;
-		return (cell);
-	}
-	i = 0;
-	while (i < pos)
-	{
-		i++;
-		precedent = current;
-		current = current->next;
-	}
-	precedent->next = cell;
-	cell->next = current;
-	return (pile);
-}
-
-int	ft_first_cell(t_pile *pile)
-{
-	t_pile *head = pile;
-	int first_data;
-	first_data = head->data;
-	return (first_data);
-}
-
-// void	ft_free_at_pos(t_pile *pile, int pos)
-// {
-// 	t_pile	*position = pile;
-// 	pile = pile->next;
-// 	free(position);
-// }
-
-void	ft_put_in_pile(int ac, char **av, t_pile *pile)   //fait
-{
-	int i = 1;
-	int j = 0;
-	int cur = 0;
-	while (i < ac)
-	{
-		cur = atoi(av[i]);
-		pile->pile_a = addAtList(pile->pile_a, cur, j);
-		i++;
-		j++;
-	}
-}
-
-void freeList(t_pile *pile)
-{
-	t_pile *tmp = NULL;
-	while(pile)
-	{
-		tmp = pile->next;
-		free(pile);
-		pile = tmp;
-	}
-	printList(pile);
-}
-
-void	push_a_to_b(t_pile *pile)
-{
-	int tmp;
-	t_pile	*position = NULL;
-
-	position = pile->pile_a;
-	tmp = ft_first_cell(pile->pile_a);
-	pile->pile_b = addAtList(pile->pile_b, tmp, 0);
-	pile->pile_a = pile->pile_a->next;
-	free(position);
-}
-
-void	push_b_to_a(t_pile *pile)
-{
-	int tmp;
-	t_pile	*position = NULL;
-
-	position = pile->pile_b;
-	tmp = ft_first_cell(pile->pile_b);
-	pile->pile_a = addAtList(pile->pile_a, tmp, 0);
-	pile->pile_b = pile->pile_b->next;
-	free(position);
-}
-
-void	sa(t_pile *pile)
-{
-	t_pile *tmp = NULL;
-
-	tmp = pile->pile_a;
-	pile->pile_a = tmp->next;
-	tmp->next = pile->pile_a->next;
-	pile->pile_a->next = tmp;
-}
-
-void	sb(t_pile *pile)
-{
-	t_pile *tmp = NULL;
-
-	tmp = pile->pile_b;
-	pile->pile_b = tmp->next;
-	tmp->next = pile->pile_b->next;
-	pile->pile_b->next = tmp;
-}
-
 
 int main(int ac, char **av)
 {
@@ -150,54 +20,98 @@ int main(int ac, char **av)
 
 	ft_put_in_pile(ac, av, &pile);
 
-	push_a_to_b(&pile);
+	ft_push_a(&pile);
 	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
 	printf(RED"Pile_A\n");
-	printList(pile.pile_a);
+	ft_print_pile(pile.pile_a);
 	printf("Pile_B\n");
-	printList(pile.pile_b);
+	ft_print_pile(pile.pile_b);
 	ft_printf("%s*****************%s\n", RED, RESET);
 
-	sa(&pile);
-	ft_printf("%s******SWAP_A******%s\n", GREEN, RESET);
-	printf(GREEN"Pile_A\n");
-	printList(pile.pile_a);
-	printf("Pile_B\n");
-	printList(pile.pile_b);
-	ft_printf("%s*****************%s\n", GREEN, RESET);
-
-	push_a_to_b(&pile);
+		ft_push_a(&pile);
 	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
 	printf(RED"Pile_A\n");
-	printList(pile.pile_a);
+	ft_print_pile(pile.pile_a);
 	printf("Pile_B\n");
-	printList(pile.pile_b);
+	ft_print_pile(pile.pile_b);
 	ft_printf("%s*****************%s\n", RED, RESET);
 
-	sb(&pile);
-	ft_printf("%s******SWAP_B******%s\n", BLUE, RESET);
-	printf(BLUE"Pile_A\n");
-	printList(pile.pile_a);
-	printf("Pile_B\n");
-	printList(pile.pile_b);
-	ft_printf("%s*****************%s\n", BLUE, RESET);
 
-	push_b_to_a(&pile);
-	ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
-	printf(YELLOW"Pile_A\n");
-	printList(pile.pile_a);
+		ft_push_a(&pile);
+	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
+	printf(RED"Pile_A\n");
+	ft_print_pile(pile.pile_a);
 	printf("Pile_B\n");
-	printList(pile.pile_b);
-	ft_printf("%s*****************%s\n", YELLOW, RESET);
-
-	push_b_to_a(&pile);
-	ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
-	printf(YELLOW"Pile_A\n");
-	printList(pile.pile_a);
+	ft_print_pile(pile.pile_b);
+	ft_printf("%s*****************%s\n", RED, RESET);
+	
+		ft_push_a(&pile);
+	ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
+	printf(RED"Pile_A\n");
+	ft_print_pile(pile.pile_a);
 	printf("Pile_B\n");
-	printList(pile.pile_b);
-	ft_printf("%s*****************%s\n", YELLOW, RESET);
+	ft_print_pile(pile.pile_b);
+	ft_printf("%s*****************%s\n", RED, RESET);
 
-	freeList(pile.pile_a);
-	freeList(pile.pile_b);
+
+	ft_rotate_b(&pile);
+	ft_printf("%s******ROTATE_B******%s\n", CYAN, RESET);
+	printf(CYAN"Pile_A\n");
+	ft_print_pile(pile.pile_a);
+	printf("Pile_B\n");
+	ft_print_pile(pile.pile_b);
+	ft_printf("%s*****************%s\n", CYAN, RESET);
+
+	
+	// ft_swap_a(&pile);
+	// ft_printf("%s******SWAP_A******%s\n", GREEN, RESET);
+	// printf(GREEN"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", GREEN, RESET);
+
+
+	// ft_rotate_a(&pile);
+	// ft_printf("%s******ROTATE_A******%s\n", CYAN, RESET);
+	// printf(CYAN"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", CYAN, RESET);
+
+	// ft_push_a(&pile);
+	// ft_printf("%s***PUSH A TO B***%s\n", RED, RESET);
+	// printf(RED"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", RED, RESET);
+
+	// ft_swap_b(&pile);
+	// ft_printf("%s******SWAP_B******%s\n", BLUE, RESET);
+	// printf(BLUE"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", BLUE, RESET);
+
+	// ft_push_b(&pile);
+	// ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
+	// printf(YELLOW"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", YELLOW, RESET);
+
+	// ft_push_b(&pile);
+	// ft_printf("%s***PUSH B TO A***%s\n", YELLOW, RESET);
+	// printf(YELLOW"Pile_A\n");
+	// ft_print_pile(pile.pile_a);
+	// printf("Pile_B\n");
+	// ft_print_pile(pile.pile_b);
+	// ft_printf("%s*****************%s\n", YELLOW, RESET);
+
+	ft_free_pile(pile.pile_a);
+	ft_free_pile(pile.pile_b);
 }

@@ -1,25 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 11:21:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 11:04:10 by bfresque         ###   ########.fr       */
+/*   Created: 2023/02/13 13:22:19 by bfresque          #+#    #+#             */
+/*   Updated: 2023/02/13 13:45:04 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../includes/push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_lst_size(t_pile *pile)
 {
-	t_list	*new;
+	int	i;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	i = 0;
+	while (pile)
+	{
+		pile = pile->next;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_first_cell(t_pile *pile)
+{
+	if (pile == NULL)
+		return (0);
+	return (pile->data);
+}
+
+int	ft_is_empty_pile(t_pile *pile)
+{
+	return (pile == NULL);
+}
+
+void	ft_print_pile(t_pile *pile)
+{
+	while (pile)
+	{
+		ft_printf("%d\n", pile->data);
+		pile = pile->next;
+	}
 }

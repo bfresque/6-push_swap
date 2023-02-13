@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/10 20:05:14 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/13 13:29:21 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,9 +79,12 @@ SRCS_PRINTF =	libft/ft_printf/ft_print_b16.c \
 SRCS_GNL =	libft/get_next_line/get_next_line.c \
 			libft/get_next_line/get_next_line_utils.c \
 
-SRCS = srcs/push_swap.c \
-		# srcs/ft_base_lst.c \
+SRCS =	srcs/push_swap.c \
+		srcs/init_add_pile.c \
 		srcs/swap.c \
+		srcs/push.c \
+		srcs/utils.c \
+		srcs/rotate.c \
 
 OBJS = $(SRCS_LIB:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS:.c=.o)
 

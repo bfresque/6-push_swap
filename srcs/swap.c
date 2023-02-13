@@ -6,28 +6,36 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 12:55:21 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/10 19:56:34 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:10:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// t_list2	*swap_a(t_list2 *L)
-// {
-// 	t_list2 *tmp = NULL;
+void	ft_swap_a(t_pile *pile)
+{
+	t_pile	*tmp;
 
-// 	tmp = L->next;
-// 	L->next = tmp->next;
-// 	tmp->next = L;
+	tmp = NULL;
+	tmp = pile->pile_a;
+	pile->pile_a = tmp->next;
+	tmp->next = pile->pile_a->next;
+	pile->pile_a->next = tmp;
+}
 
-// 	return (tmp);
-// }
+void	ft_swap_b(t_pile *pile)
+{
+	t_pile	*tmp;
 
+	tmp = NULL;
+	tmp = pile->pile_b;
+	pile->pile_b = tmp->next;
+	tmp->next = pile->pile_b->next;
+	pile->pile_b->next = tmp;
+}
 
-
-// t_list2	*ft_push_a_to_b(t_list2 *origin, t_list2 *destination)
-// {
-// 	int tmp = ft_first_cell(origin);
-// 	destination = addAtList(destination, tmp, 0);
-// 	return(destination);
-// }
+void	ft_ss(t_pile *pile)
+{
+	ft_swap_a(pile);
+	ft_swap_b(pile);
+}

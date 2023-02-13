@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 10:06:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:11:26 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,38 @@ typedef struct s_pile
 {
 	int 			data;
 	struct s_pile	*next;
+	struct s_pile	*before;
 	struct s_pile	*pile_a;
 	struct s_pile	*pile_b;
 }				t_pile;
 
+/*********************	init_add_pile.c	********************/
+t_pile	*ft_new_cell(int data);
+t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos);
+void	ft_put_in_pile(int ac, char **av, t_pile *pile);
+void	ft_free_pile(t_pile *pile);
 
-/*********************	ft_base_lst.c	********************/
 
+/*********************	push_swap.c	********************/
 
+/*********************	push.c	********************/
+void	ft_push_a(t_pile *pile);
+void	ft_push_b(t_pile *pile);
+void	ft_ss(t_pile *pile);
 
+/*********************	rotate.c	********************/
+void	ft_rotate_a(t_pile *pile);
+void	ft_rotate_b(t_pile *pile);
+void	ft_rr(t_pile *pile);
+
+/*********************	swap.c	********************/
+void	ft_swap_a(t_pile *pile);
+void	ft_swap_b(t_pile *pile);
+
+/*********************	utils.c	********************/
+int		ft_lst_size(t_pile *pile);
+int		ft_first_cell(t_pile *pile);
+int		ft_is_empty_pile(t_pile *pile);
+void	ft_print_pile(t_pile *pile);
 
 #endif
