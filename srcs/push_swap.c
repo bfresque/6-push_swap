@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/15 15:37:20 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:30:19 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,48 +41,6 @@ int ft_is_sort(t_pile *pile)
 		return 1;
 	else
 		return 0;
-}
-
-int ft_find_smallest(t_pile *pile)
-{
-	int smallest = ft_first_cell(pile);
-	t_pile *temp = pile->next;
-	
-	while (temp)
-	{
-		if (temp->data < smallest)
-			smallest = temp->data;
-		temp = temp->next;
-	}
-	return (smallest);
-}
-
-void ft_ac_less_five(t_pile *pile)
-{
-	int smallest;
-	int i = 0;
-
-	while (i != 2)
-	{
-		smallest = ft_find_smallest(pile->pile_a);
-		if (ft_first_cell(pile->pile_a) != smallest)
-			ft_reverse_rotate_a(pile);
-		else
-		{
-			ft_push_a(pile);
-			i++;
-		}
-	}
-	if (pile->pile_a->data > pile->pile_a->next->data)
-		ft_swap_a(pile);
-	if (pile->pile_a->data > pile->pile_a->next->next->data)
-		ft_reverse_rotate_a(pile);
-	if (pile->pile_a->next->data > pile->pile_a->next->next->data)
-		ft_reverse_rotate_a(pile);
-	if (pile->pile_a->data > pile->pile_a->next->data)
-		ft_swap_a(pile);
-	while (pile->pile_b)
-		ft_push_b(pile);
 }
 
 int check_arg(int ac, char **av)
@@ -149,12 +107,16 @@ int main(int ac, char **av)
 		exit(-1);
 	}
 	printpiles(&pile); //print
-	if	(ac <= 6)
-		ft_ac_less_five(&pile); //tri
+	
+	if	(ac < 5)
+		ft_less_four_ac(&pile);
+	if	(ac == 5)
+		ft_four_ac(&pile);
+	if	(ac == 6)
+		ft_five_ac(&pile); //tri
+	
 	printpiles(&pile); //print
-
 	printf("Is sort ? = %d", ft_is_sort(&pile));// verif
-
 	ft_free_pile(pile.pile_a);
 	ft_free_pile(pile.pile_b);
 }

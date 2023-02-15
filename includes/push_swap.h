@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/14 10:42:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:29:37 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void	ft_put_in_pile(int ac, char **av, t_pile *pile);
 void	ft_free_pile(t_pile *pile);
 t_pile	*ft_delete_last_cell(t_pile *pile);
 
+/*********************	less_five.c	********************/
+void ft_less_four_ac(t_pile *pile);
+void ft_four_ac(t_pile *pile);
+void ft_five_ac(t_pile *pile);
 
 /*********************	push_swap.c	********************/
 int	ft_is_sort(t_pile *pile);
