@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:33:45 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/06 10:08:25 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:26:37 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *s, int c, size_t n);
+
+int ft_strcmp(char *s1, char *s2);
 
 char	*ft_itoa(int n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

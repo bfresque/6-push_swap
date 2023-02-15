@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/13 14:32:51 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/15 15:28:39 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS_LIB =	libft/libft/ft_isalpha.c \
 			libft/libft/ft_strchr.c \
 			libft/libft/ft_strrchr.c \
 			libft/libft/ft_strncmp.c \
+			libft/libft/ft_strcmp.c \
 			libft/libft/ft_memchr.c \
 			libft/libft/ft_memcmp.c \
 			libft/libft/ft_strnstr.c \
@@ -86,6 +87,7 @@ SRCS =	srcs/push_swap.c \
 		srcs/utils.c \
 		srcs/rotate.c \
 		srcs/rotate_inv.c \
+		autres/A_SUPPRIMER.c \
 
 OBJS = $(SRCS_LIB:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:26:20 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 14:21:57 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:48:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_rotate_a(t_pile *pile)
 {
-	int	first_value;
-	int	last_pos;
+	int		first_value;
+	int		last_pos;
 	t_pile	*free_pile;
 
 	first_value = ft_first_cell(pile->pile_a);
@@ -28,8 +28,8 @@ void	ft_rotate_a(t_pile *pile)
 
 void	ft_rotate_b(t_pile *pile)
 {
-	int	first_value;
-	int	last_pos;
+	int		first_value;
+	int		last_pos;
 	t_pile	*free_pile;
 
 	first_value = ft_first_cell(pile->pile_b);

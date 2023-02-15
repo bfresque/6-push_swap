@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 15:12:38 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:47:35 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos)
 		cell->next = pile;
 		return (cell);
 	}
-	i = 0;
 	while (i < pos)
 	{
-		i++;
 		precedent = current;
 		current = current->next;
+		i++;
 	}
 	precedent->next = cell;
 	cell->next = current;
@@ -88,8 +87,18 @@ void	ft_free_pile(t_pile *pile)
 
 t_pile	*ft_delete_last_cell(t_pile *pile)
 {
-	t_pile *prev = NULL;
-	t_pile *curr = pile;
+	t_pile	*prev;
+	t_pile	*curr;
+
+	if (ft_is_empty_pile(pile))
+		return (NULL);
+	if (pile->next == NULL)
+	{
+		free(pile);
+		return (NULL);
+	}
+	prev = NULL;
+	curr = pile;
 	while (curr->next != NULL)
 	{
 		prev = curr;
@@ -97,5 +106,5 @@ t_pile	*ft_delete_last_cell(t_pile *pile)
 	}
 	free(curr);
 	prev->next = NULL;
-	return pile;
+	return (pile);
 }

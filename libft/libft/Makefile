@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 10:34:58 by bfresque          #+#    #+#              #
-#    Updated: 2022/11/25 11:17:03 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/15 15:27:41 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS    =     ft_isalpha.c \
 			ft_strchr.c \
 			ft_strrchr.c \
 			ft_strncmp.c \
+			ft_strcmp.c \
 			ft_memchr.c \
 			ft_memcmp.c \
 			ft_strnstr.c \

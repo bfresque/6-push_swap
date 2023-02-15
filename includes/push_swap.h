@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 15:13:43 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/14 10:42:54 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_pile	*ft_delete_last_cell(t_pile *pile);
 
 
 /*********************	push_swap.c	********************/
+int	ft_is_sort(t_pile *pile);
 
 /*********************	push.c	********************/
 void	ft_push_a(t_pile *pile);
@@ -74,5 +75,9 @@ int		ft_first_cell(t_pile *pile);
 int		ft_last_cell(t_pile *pile);
 int		ft_is_empty_pile(t_pile *pile);
 void	ft_print_pile(t_pile *pile);
+
+
+/*********************	SUPPRIMER	********************/
+void    dechet(t_pile   *pile);
 
 #endif
