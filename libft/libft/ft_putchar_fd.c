@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:21:29 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/06 10:08:04 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:31:44 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	ft_putchar_fd(char c, int fd)
 {
-	return(write (fd, &c, 1));
+	return (write (fd, &c, 1));
 }

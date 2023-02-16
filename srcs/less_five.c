@@ -6,17 +6,19 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:22:47 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/15 16:31:50 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:27:11 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int ft_find_smallest(t_pile *pile)
+int	ft_find_smallest(t_pile *pile)
 {
-	int smallest = ft_first_cell(pile);
-	t_pile *temp = pile->next;
-	
+	t_pile	*temp;
+	int		smallest;
+
+	temp = pile->next;
+	smallest = ft_first_cell(pile);
 	while (temp)
 	{
 		if (temp->data < smallest)
@@ -26,7 +28,7 @@ int ft_find_smallest(t_pile *pile)
 	return (smallest);
 }
 
-void ft_less_four_ac(t_pile *pile)
+void	ft_less_four_ac(t_pile *pile)
 {
 	if (pile->pile_a->next)
 	{
@@ -50,12 +52,12 @@ void ft_less_four_ac(t_pile *pile)
 	}
 }
 
-void ft_four_ac(t_pile *pile)
+void	ft_four_ac(t_pile *pile)
 {
-	int smallest;
-	int i = 0;
+	int	smallest;
+	int	i;
 
-	
+	i = 0;
 	while (i == 0)
 	{
 		smallest = ft_find_smallest(pile->pile_a);
@@ -79,11 +81,12 @@ void ft_four_ac(t_pile *pile)
 		ft_push_b(pile);
 }
 
-void ft_five_ac(t_pile *pile)
+void	ft_five_ac(t_pile *pile)
 {
-	int smallest;
-	int i = 0;
+	int	smallest;
+	int	i;
 
+	i = 0;
 	while (i != 2)
 	{
 		smallest = ft_find_smallest(pile->pile_a);

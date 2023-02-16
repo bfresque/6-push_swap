@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/15 16:29:37 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:32:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,55 @@
 # include "../includes/get_next_line.h"
 # include "../includes/libft.h"
 # include "../includes/ft_printf.h"
-#include <stdio.h>
-#include <stdlib.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-#define RESET "\033[0m"
-#define BLACK "\033[30m"
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN "\033[36m"
-#define WHITE "\033[37m"
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+
+# define RESET "\033[0m"
+# define BLACK "\033[30m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN "\033[36m"
+# define WHITE "\033[37m"
 
 typedef struct s_pile
 {
-	int 			data;
+	long			data;
 	struct s_pile	*next;
-	struct s_pile	*before;
 	struct s_pile	*pile_a;
 	struct s_pile	*pile_b;
 }				t_pile;
 
+/*********************	check_argc.c	********************/
+int		ft_is_sort(t_pile *pile);
+void	check_arg(int ac, char **av);
+void	check_args(int ac, char **av, int j);
+void	check_int(t_pile *pile);
+
 /*********************	init_add_pile.c	********************/
-t_pile	*ft_new_cell(int data);
-t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos);
+t_pile	*ft_new_cell(long data);
+t_pile	*ft_add_at_pile(t_pile *pile, long data, int pos);
 void	ft_put_in_pile(int ac, char **av, t_pile *pile);
 void	ft_free_pile(t_pile *pile);
 t_pile	*ft_delete_last_cell(t_pile *pile);
 
 /*********************	less_five.c	********************/
-void ft_less_four_ac(t_pile *pile);
-void ft_four_ac(t_pile *pile);
-void ft_five_ac(t_pile *pile);
+void	ft_less_four_ac(t_pile *pile);
+void	ft_four_ac(t_pile *pile);
+void	ft_five_ac(t_pile *pile);
 
 /*********************	push_swap.c	********************/
-int	ft_is_sort(t_pile *pile);
+int		ft_is_sort(t_pile *pile);
 
 /*********************	push.c	********************/
 void	ft_push_a(t_pile *pile);
 void	ft_push_b(t_pile *pile);
 void	ft_ss(t_pile *pile);
-
 
 /*********************	rotate_inv.c	********************/
 void	ft_reverse_rotate_a(t_pile *pile);
@@ -75,13 +82,13 @@ void	ft_swap_b(t_pile *pile);
 
 /*********************	utils.c	********************/
 int		ft_pile_size(t_pile *pile);
-int		ft_first_cell(t_pile *pile);
-int		ft_last_cell(t_pile *pile);
+long	ft_first_cell(t_pile *pile);
+long	ft_last_cell_a(t_pile *pile);
+long	ft_last_cell_b(t_pile *pile);
 int		ft_is_empty_pile(t_pile *pile);
 void	ft_print_pile(t_pile *pile);
 
-
 /*********************	SUPPRIMER	********************/
-void    dechet(t_pile   *pile);
+void	dechet(t_pile *pile); //suppr
 
 #endif

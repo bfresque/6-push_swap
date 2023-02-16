@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:22:19 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 15:48:20 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:29:11 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,38 @@ int	ft_pile_size(t_pile *pile)
 	return (i);
 }
 
-int	ft_first_cell(t_pile *pile)
+long	ft_first_cell(t_pile *pile)
 {
 	if (pile == NULL)
 		return (0);
 	return (pile->data);
 }
 
-int	ft_last_cell(t_pile *pile)
+long	ft_last_cell_a(t_pile *pile)
 {
-	if (pile == NULL)
+	t_pile	*temp;
+
+	temp = pile->pile_a;
+	if (temp == NULL)
 		return (0);
-	while (pile->next != NULL)
-	{
-		pile = pile->next;
-	}
-	return (pile->data);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp->data);
+}
+
+long	ft_last_cell_b(t_pile *pile)
+{
+	t_pile	*temp;
+
+	temp = pile->pile_b;
+	if (temp == NULL)
+		return (0);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp->data);
 }
 
 int	ft_is_empty_pile(t_pile *pile)
 {
 	return (pile == NULL);
-}
-
-void	ft_print_pile(t_pile *pile)
-{
-	while (pile)
-	{
-		ft_printf("%d\n", pile->data);
-		pile = pile->next;
-	}
 }

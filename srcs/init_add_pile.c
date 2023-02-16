@@ -6,13 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 15:47:35 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:51:09 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_pile	*ft_new_cell(int data)
+t_pile	*ft_new_cell(long data)
 {
 	t_pile	*new;
 
@@ -24,7 +24,7 @@ t_pile	*ft_new_cell(int data)
 	return (new);
 }
 
-t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos)
+t_pile	*ft_add_at_pile(t_pile *pile, long data, int pos)
 {
 	int		i;
 	t_pile	*precedent;
@@ -55,20 +55,21 @@ t_pile	*ft_add_at_pile(t_pile *pile, int data, int pos)
 
 void	ft_put_in_pile(int ac, char **av, t_pile *pile)
 {
-	int	i;
-	int	j;
-	int	cur;
+	int		i;
+	int		j;
+	long	cur;
 
 	i = 1;
 	j = 0;
 	cur = 0;
 	while (i < ac)
 	{
-		cur = atoi(av[i]);
+		cur = ft_atoi(av[i]);
 		pile->pile_a = ft_add_at_pile(pile->pile_a, cur, j);
 		i++;
 		j++;
 	}
+	check_int(pile);
 }
 
 void	ft_free_pile(t_pile *pile)

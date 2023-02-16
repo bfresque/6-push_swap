@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/15 16:26:38 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/16 11:37:53 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,9 @@ SRCS_PRINTF =	libft/ft_printf/ft_print_b16.c \
 SRCS_GNL =	libft/get_next_line/get_next_line.c \
 			libft/get_next_line/get_next_line_utils.c \
 
-SRCS =	srcs/push_swap.c \
+SRCS =	srcs/check_argc.c \
 		srcs/init_add_pile.c \
+		srcs/push_swap.c \
 		srcs/less_five.c \
 		srcs/swap.c \
 		srcs/push.c \
