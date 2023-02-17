@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:36:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/16 11:52:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:29:59 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_is_sort(t_pile *pile)
 	size = ft_pile_size(pile->pile_a);
 	if (size == 1)
 	{
-		ft_printf ("\nError: Pile all-ready sort\n\n");
+		ft_printf("\nError: Pile all-ready sort\n\n");
 		ft_free_pile(pile->pile_a);
 		exit(-1);
 	}
@@ -65,7 +65,7 @@ void	check_arg(int ac, char **av)
 		while (j < larg)
 		{
 			if (ft_isdigit(arg[j]) == 0 && (arg[j] != '-')
-				&& (arg[j] != '"'))
+				&& (arg[j] != '"') && (arg[j] != '+'))
 			{
 				ft_printf("\nError : Arguments must be digit\n\n");
 				exit(-1);

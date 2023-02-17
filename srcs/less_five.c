@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:22:47 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/16 12:27:11 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:05:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ int	ft_find_smallest(t_pile *pile)
 		temp = temp->next;
 	}
 	return (smallest);
+}
+
+int	ft_find_biggest(t_pile *pile)
+{
+	t_pile	*temp;
+	int		biggest;
+
+	temp = pile->next;
+	biggest = ft_first_cell(pile);
+	while (temp)
+	{
+		if (temp->data > biggest)
+			biggest = temp->data;
+		temp = temp->next;
+	}
+	return (biggest);
 }
 
 void	ft_less_four_ac(t_pile *pile)
@@ -54,14 +70,13 @@ void	ft_less_four_ac(t_pile *pile)
 
 void	ft_four_ac(t_pile *pile)
 {
-	int	smallest;
 	int	i;
 
 	i = 0;
 	while (i == 0)
 	{
-		smallest = ft_find_smallest(pile->pile_a);
-		if (ft_first_cell(pile->pile_a) != smallest)
+		pile->smallest = ft_find_smallest(pile->pile_a);
+		if (ft_first_cell(pile->pile_a) != pile->smallest)
 			ft_reverse_rotate_a(pile);
 		else
 		{
@@ -83,14 +98,13 @@ void	ft_four_ac(t_pile *pile)
 
 void	ft_five_ac(t_pile *pile)
 {
-	int	smallest;
 	int	i;
 
 	i = 0;
 	while (i != 2)
 	{
-		smallest = ft_find_smallest(pile->pile_a);
-		if (ft_first_cell(pile->pile_a) != smallest)
+		pile->smallest = ft_find_smallest(pile->pile_a);
+		if (ft_first_cell(pile->pile_a) != pile->smallest)
 			ft_reverse_rotate_a(pile);
 		else
 		{

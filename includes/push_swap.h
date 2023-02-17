@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/16 12:32:36 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:15:38 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@
 typedef struct s_pile
 {
 	long			data;
+	int				chunk_size;
+	int				left;
+	int				smallest;
+	int				biggest;
+	int				mediane;
 	struct s_pile	*next;
+	struct s_pile	*prev;
 	struct s_pile	*pile_a;
 	struct s_pile	*pile_b;
 }				t_pile;
@@ -54,6 +60,8 @@ void	ft_free_pile(t_pile *pile);
 t_pile	*ft_delete_last_cell(t_pile *pile);
 
 /*********************	less_five.c	********************/
+int		ft_find_smallest(t_pile *pile);
+int		ft_find_biggest(t_pile *pile);
 void	ft_less_four_ac(t_pile *pile);
 void	ft_four_ac(t_pile *pile);
 void	ft_five_ac(t_pile *pile);

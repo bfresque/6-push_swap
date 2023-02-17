@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:26:20 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/13 15:48:47 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:32:08 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_rotate_a(t_pile *pile)
 	pile->pile_a = pile->pile_a->next;
 	last_pos = ft_pile_size(pile->pile_a);
 	pile->pile_a = ft_add_at_pile(pile->pile_a, first_value, last_pos);
+	ft_printf("ra \n");
 	free(free_pile);
 }
 
@@ -37,6 +38,7 @@ void	ft_rotate_b(t_pile *pile)
 	pile->pile_b = pile->pile_b->next;
 	last_pos = ft_pile_size(pile->pile_b);
 	pile->pile_b = ft_add_at_pile(pile->pile_b, first_value, last_pos);
+	ft_printf("rb \n");
 	free(free_pile);
 }
 
