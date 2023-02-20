@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/16 16:00:50 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/20 09:42:49 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_pile	*ft_add_at_pile(t_pile *pile, long data, int pos)
 	}
 	precedent->next = cell;
 	cell->next = current;
+	cell->prev = precedent;
 	return (pile);
 }
 

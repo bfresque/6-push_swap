@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/17 13:15:38 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:17:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@
 typedef struct s_pile
 {
 	long			data;
+	int				size;
 	int				chunk_size;
 	int				left;
 	int				smallest;
 	int				biggest;
+	int				min_chunk;
+	int				max_chunk;
 	int				mediane;
 	struct s_pile	*next;
 	struct s_pile	*prev;
@@ -51,6 +54,17 @@ int		ft_is_sort(t_pile *pile);
 void	check_arg(int ac, char **av);
 void	check_args(int ac, char **av, int j);
 void	check_int(t_pile *pile);
+
+/*********************	ft_find_top_&_data.c	********************/
+void	ft_mediane_value(t_pile *pile);
+int	ft_find_from_top(t_pile *pile);
+int	ft_find_from_bottom(t_pile *pile);
+void	chunk_value(t_pile *pile);
+int	ft_find_top_cell(t_pile *pile, int data);
+int	ft_find_bottom_cell(t_pile *pile, int data);
+
+/*********************	ft_find_top_&_data.c	********************/
+void	ft_less_hundred(t_pile *pile);
 
 /*********************	init_add_pile.c	********************/
 t_pile	*ft_new_cell(long data);
@@ -68,6 +82,8 @@ void	ft_five_ac(t_pile *pile);
 
 /*********************	push_swap.c	********************/
 int		ft_is_sort(t_pile *pile);
+void	ft_print_pile(t_pile *pile); //suppr
+void	printpiles(t_pile *pile); //suppr
 
 /*********************	push.c	********************/
 void	ft_push_a(t_pile *pile);
