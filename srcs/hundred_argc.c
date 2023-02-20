@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:57:46 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 17:06:57 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:00:49 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_less_hundred(t_pile *pile)
 
 	while (pile->pile_a)
 	{
-		printpiles(pile);
+		// printpiles(pile);
 		data_top = ft_find_from_top(pile);
 		position_top = ft_find_top_cell(pile, data_top);
 		data_bottom = ft_find_from_bottom(pile);
@@ -65,7 +65,7 @@ void	ft_less_hundred(t_pile *pile)
 		if (pile->pile_a->next == NULL)
 		{
 			ft_push_a(pile);
-			printpiles(pile);
+			// printpiles(pile);
 			exit (0);
 		}
 	}

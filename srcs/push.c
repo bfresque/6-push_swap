@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:25:35 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/16 13:31:20 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:01:33 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_push_a(t_pile *pile)
 	tmp = ft_first_cell(pile->pile_a);
 	pile->pile_b = ft_add_at_pile(pile->pile_b, tmp, 0);
 	pile->pile_a = pile->pile_a->next;
-	ft_printf("pa \n");
+	ft_printf("pb\n");
 	free(position);
 }
 
@@ -36,6 +36,6 @@ void	ft_push_b(t_pile *pile)
 	tmp = ft_first_cell(pile->pile_b);
 	pile->pile_a = ft_add_at_pile(pile->pile_a, tmp, 0);
 	pile->pile_b = pile->pile_b->next;
-	ft_printf("pb \n");
+	ft_printf("pa\n");
 	free(position);
 }

@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/20 11:01:54 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/20 18:02:07 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ SRCS =	srcs/check_argc.c \
 		srcs/rotate_inv.c \
 		srcs/find_top_and_data.c \
 		srcs/hundred_argc.c \
-		autres/A_SUPPRIMER.c \
+		# autres/A_SUPPRIMER.c \
 
 OBJS = $(SRCS_LIB:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS:.c=.o)
 
