@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:53:45 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/21 09:40:16 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:04:01 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ int	ft_find_from_top(t_pile *pile)
 				return (tmp->data);
 			tmp = tmp->next;
 		}
-		tmp = pile->pile_a;
 		pile->min_chunk = pile->min_chunk + pile->chunk_size;
 		pile->max_chunk = pile->max_chunk + pile->chunk_size;
+		tmp = pile->pile_a;
+
 	}
 	return (0);
 }
 
 int	ft_find_from_bottom(t_pile *pile)
 {
-	t_pile *tmp;
+	t_pile	*tmp;
 
 	tmp = pile->pile_a;
 	while (tmp->next)
@@ -53,24 +54,20 @@ int	ft_find_from_bottom(t_pile *pile)
 				return (tmp->data);
 			tmp = tmp->prev;
 		}
-		tmp = pile->pile_a;
 		pile->min_chunk = pile->min_chunk + pile->chunk_size;
 		pile->max_chunk = pile->max_chunk + pile->chunk_size;
+		tmp = pile->pile_a;
 	}
 	return (0);
 }
 
 void	chunk_value(t_pile *pile)
 {
-	int	diff;
-
 	pile->smallest = ft_find_smallest(pile->pile_a);
 	pile->biggest = ft_find_biggest(pile->pile_a);
-	diff = pile->biggest - pile->smallest;
-	pile->chunk_size = diff / 5;
-	pile->left = diff - (pile->chunk_size * 5);
+	pile->chunk_size = ((pile->biggest - pile->smallest) / 5);
 	pile->min_chunk = pile->smallest;
-	pile->max_chunk = pile->smallest + pile->chunk_size;
+	pile->max_chunk = pile->smallest + pile->chunk_size + pile->chunk_size;
 }
 
 int	ft_find_top_cell(t_pile *pile, int data)

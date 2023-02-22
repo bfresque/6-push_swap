@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:57:46 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 10:54:39 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:37:05 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,6 @@ int	ft_find_in_b(t_pile *pile, int data)
 	return (i);
 }
 
-// void	help_push_near(t_pile *pile)
-// {
-// 	t_pile	*temp;
-// 	long ecart;
-// 	long tmp;
-// 	int curr;
-
-// 	temp = pile->pile_b;
-
-// 	if (ft_pile_size(pile->pile_b) >= 2)
-// 	{
-// 		while (temp)
-// 		{
-// 			ecart = (pile->pile_a->data)-(temp->data);
-// 			if (ecart > 0)
-// 			{
-// 				if(tmp > ecart)
-// 				{
-// 					tmp = ecart;
-// 					curr = temp->data;
-// 					printf("la plus proche dans b : %ld\n", curr);
-// 				}
-// 			}
-// 			temp = temp->next;
-// 		}
-// 		// while (ft_find_in_b(pile, curr) != 0)
-// 		// 	ft_rotate_b(pile);
-// 	}
-// 	// ft_push_a(pile);
-// }
-
 void	find_near_less(t_pile *pile)
 {
 	t_pile	*tmp;
@@ -65,13 +34,11 @@ void	find_near_less(t_pile *pile)
 	long	yes;
 
 	template = pile->pile_a->data;
-	// printf("valeur du template initial : %ld\n", template);
 	yes = 0;
 	while(yes == 0)
 	{
 		tmp = pile->pile_b;
 		template = template - 1;
-		// printf("valeur du template -1 : %ld\n", template);
 		while (tmp)
 		{
 			if (template == tmp->data)
@@ -126,8 +93,8 @@ void	ft_less_hundred(t_pile *pile)
 		ft_mediane_value(pile);
 		if (position_top <= difference)
 		{
-			if (pile->mediane >= position_top)
-			{
+			// if (pile->mediane >= position_top)
+			// {
 				while (position_top != 0)
 				{
 					ft_rotate_a(pile);
@@ -137,12 +104,12 @@ void	ft_less_hundred(t_pile *pile)
 					push_near(pile);
 				else
 					ft_push_a(pile);
-			}
+			// }
 		}
 		else if (position_top > difference)
 		{
-			if (pile->mediane <= position_bottom)
-			{
+			// if (pile->mediane <= position_bottom)
+			// {
 				while (position_bottom != 0)
 				{
 					ft_reverse_rotate_a(pile);
@@ -152,12 +119,17 @@ void	ft_less_hundred(t_pile *pile)
 					push_near(pile);
 				else
 					ft_push_a(pile);
-			}
+			// }
 		}
 		if (pile->pile_a->next == NULL)
-		{
-			ft_push_a(pile);
-			exit (0);
-		}
+			push_near(pile);
+		// printpiles(pile);
 	}
+	while (ft_first_cell(pile->pile_b) != ft_find_biggest(pile->pile_b))
+	{
+		ft_rotate_b(pile);
+	}
+	while (pile->pile_b)
+		ft_push_b(pile);
+	// printpiles(pile);
 }

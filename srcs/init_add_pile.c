@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 18:04:39 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:03:23 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_free_pile(t_pile *pile)
 		free(pile);
 		pile = tmp;
 	}
-	// ft_print_pile(pile);
 }
+
 t_pile	*ft_new_cell(long data)
 {
 	t_pile	*new;
