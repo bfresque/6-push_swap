@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:57:46 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 14:37:05 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:32:33 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ void	find_near_less(t_pile *pile)
 		}
 	}
 	while (ft_find_in_b(pile, yes) != 0)
-		ft_rotate_b(pile);
+	{
+		if (pile->mediane_b >= ft_find_in_b(pile, yes))
+			ft_rotate_b(pile);
+		else
+			ft_reverse_rotate_b(pile);
+	}
 }
 
 void	push_near(t_pile *pile)
@@ -58,17 +63,29 @@ void	push_near(t_pile *pile)
 	int		highest_in_b;
 	int		smallest_in_b;
 	
+	if (ft_pile_size(pile->pile_b) >= 2)
+		ft_mediane_b_value(pile);
 	highest_in_b = ft_find_biggest(pile->pile_b);
 	smallest_in_b = ft_find_smallest(pile->pile_b);
 	if (ft_first_cell(pile->pile_a) >= highest_in_b)
 	{
 		while (ft_first_cell(pile->pile_b) != highest_in_b)
+		{
+			if (pile->mediane_b >= ft_find_in_b(pile, highest_in_b))
 				ft_rotate_b(pile);
+			else
+				ft_reverse_rotate_b(pile);
+		}
 	}
 	else if (ft_first_cell(pile->pile_a) < smallest_in_b)
 	{
 		while (ft_first_cell(pile->pile_b) != highest_in_b)
+		{
+			if (pile->mediane_b >= ft_find_in_b(pile, highest_in_b))
 				ft_rotate_b(pile);
+			else
+				ft_reverse_rotate_b(pile);
+		}
 	}
 	else if (ft_first_cell(pile->pile_a) > smallest_in_b && ft_first_cell(pile->pile_a) < highest_in_b)
 		find_near_less(pile);
@@ -93,8 +110,6 @@ void	ft_less_hundred(t_pile *pile)
 		ft_mediane_value(pile);
 		if (position_top <= difference)
 		{
-			// if (pile->mediane >= position_top)
-			// {
 				while (position_top != 0)
 				{
 					ft_rotate_a(pile);
@@ -104,12 +119,9 @@ void	ft_less_hundred(t_pile *pile)
 					push_near(pile);
 				else
 					ft_push_a(pile);
-			// }
 		}
 		else if (position_top > difference)
 		{
-			// if (pile->mediane <= position_bottom)
-			// {
 				while (position_bottom != 0)
 				{
 					ft_reverse_rotate_a(pile);
@@ -119,7 +131,6 @@ void	ft_less_hundred(t_pile *pile)
 					push_near(pile);
 				else
 					ft_push_a(pile);
-			// }
 		}
 		if (pile->pile_a->next == NULL)
 			push_near(pile);

@@ -6,17 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 14:29:26 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:00:30 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-/*
-1- trouver mes valeurs de chunk (V)
-2- verifier si il y a des nombre du chunck 1 dans a en partant du plus petit
-3- chercher si il est plus facil de monter ou de descendre en calculant la mediane 
-
-*/
 
 void	ft_print_pile(t_pile *pile) //suppr
 {

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:22:47 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/21 10:11:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:42:04 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void	ft_five_ac(t_pile *pile)
 		pile->smallest = ft_find_smallest(pile->pile_a);
 		if (ft_first_cell(pile->pile_a) != pile->smallest)
 		{
-			if (ft_find_top_cell(pile, pile->smallest) > pile->mediane)
+			if (ft_find_top_cell(pile, pile->smallest) > pile->mediane_a)
 				ft_reverse_rotate_a(pile);
-			else if (ft_find_top_cell(pile, pile->smallest) <= pile->mediane)
+			else// if (ft_find_top_cell(pile, pile->smallest) <= pile->mediane_a)
 				ft_rotate_a(pile);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 13:48:53 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:01:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct s_pile
 	int				biggest;
 	int				min_chunk;
 	int				max_chunk;
-	int				mediane;
+	int				mediane_a;
+	int				mediane_b;
 	struct s_pile	*next;
 	struct s_pile	*prev;
 	struct s_pile	*pile_a;
@@ -57,6 +58,7 @@ void	check_int(t_pile *pile);
 
 /*********************	ft_find_top_&_data.c	********************/
 void	ft_mediane_value(t_pile *pile);
+void	ft_mediane_b_value(t_pile *pile);
 int	ft_find_from_top(t_pile *pile);
 int	ft_find_from_bottom(t_pile *pile);
 void	chunk_value(t_pile *pile);
