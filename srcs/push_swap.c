@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 18:10:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:41:05 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int ac, char **av)
 	chunk_value(&pile);
 	pile.size = ft_pile_size(pile.pile_a);
 	
+	ft_mediane_value(&pile);
 	if (ac < 5)
 		ft_less_four_ac(&pile);
 	if (ac == 5)

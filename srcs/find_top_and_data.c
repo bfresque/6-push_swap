@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:53:45 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 18:00:36 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:40:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_mediane_value(t_pile *pile)
 {
 	pile->mediane = ft_pile_size(pile->pile_a) / 2;
-	// printf("mediane  =  %d\n", pile->mediane);
 }
 
 int	ft_find_from_top(t_pile *pile)
@@ -28,10 +27,7 @@ int	ft_find_from_top(t_pile *pile)
 		while (tmp)
 		{
 			if (tmp->data >= pile->min_chunk && tmp->data <= pile->max_chunk)
-			{
-				// printf("premier compris =  %ld\n", tmp->data);
 				return (tmp->data);
-			}
 			tmp = tmp->next;
 		}
 		tmp = pile->pile_a;
@@ -54,10 +50,7 @@ int	ft_find_from_bottom(t_pile *pile)
 		while (tmp)
 		{
 			if (tmp->data >= pile->min_chunk && tmp->data <= pile->max_chunk)
-			{
-				// printf("premier compris =  %ld\n", tmp->data);
 				return (tmp->data);
-			}
 			tmp = tmp->prev;
 		}
 		tmp = pile->pile_a;
