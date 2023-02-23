@@ -6,38 +6,12 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 12:04:12 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:16:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
-void	ft_print_pile(t_pile *pile) //suppr
-{
-	while (pile)
-	{
-		ft_printf("%d\n", pile->data);
-		pile = pile->next;
-	}
-}
-
-void	printpiles(t_pile *pile) //suppr
-{
-	if (pile->pile_a != NULL)
-	{
-		ft_printf("%s*****************\n", BLUE);
-		ft_print_pile(pile->pile_a);
-		ft_printf("%s****** a ********%s\n", BLUE, RESET);
-	}
-	if (pile->pile_b != NULL)
-	{
-	ft_printf("%s*****************\n", MAGENTA);
-	ft_print_pile(pile->pile_b);
-	ft_printf("%s****** b ********%s\n", MAGENTA, RESET);
-	}
-}
-*/
 void	ft_len_argc(int ac, char **av)
 {
 	int	i;

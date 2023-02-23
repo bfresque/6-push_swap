@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/23 12:04:57 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/23 12:22:55 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,19 +81,18 @@ SRCS_GNL =	libft/get_next_line/get_next_line.c \
 			libft/get_next_line/get_next_line_utils.c \
 
 SRCS =	srcs/check_argc.c \
-		srcs/init_add_pile.c \
-		srcs/push_swap.c \
-		srcs/less_five.c \
-		srcs/swap.c \
-		srcs/push.c \
-		srcs/utils.c \
-		srcs/utils_two.c \
-		srcs/rotate.c \
-		srcs/rotate_inv.c \
 		srcs/find_top_and_data.c \
 		srcs/hundred_argc.c \
+		srcs/init_add_pile.c \
+		srcs/less_five.c \
+		srcs/push_swap.c \
+		srcs/push.c \
+		srcs/rotate_inv.c \
+		srcs/rotate.c \
+		srcs/swap.c \
 		srcs/utils_hundred_argc.c \
-		# autres/A_SUPPRIMER.c \
+		srcs/utils_two.c \
+		srcs/utils.c \
 
 OBJS = $(SRCS_LIB:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_GNL:.c=.o) $(SRCS:.c=.o)
 
