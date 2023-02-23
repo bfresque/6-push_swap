@@ -6,13 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:25:35 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 18:01:33 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:27:50 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_push_a(t_pile *pile)
+void	ft_push_a_to_b(t_pile *pile)
 {
 	int		tmp;
 	t_pile	*position;
@@ -26,7 +26,7 @@ void	ft_push_a(t_pile *pile)
 	free(position);
 }
 
-void	ft_push_b(t_pile *pile)
+void	ft_push_b_to_a(t_pile *pile)
 {
 	int		tmp;
 	t_pile	*position;

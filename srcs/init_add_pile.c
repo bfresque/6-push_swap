@@ -6,24 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:33:00 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 11:03:23 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:21:26 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	ft_free_pile(t_pile *pile)
-{
-	t_pile	*tmp;
-
-	tmp = NULL;
-	while (pile)
-	{
-		tmp = pile->next;
-		free(pile);
-		pile = tmp;
-	}
-}
 
 t_pile	*ft_new_cell(long data)
 {
@@ -51,10 +38,7 @@ t_pile	*ft_add_at_pile(t_pile *pile, long data, int pos)
 	if (ft_is_empty_pile(pile))
 		return (cell);
 	if (pos == 0)
-	{
-		cell->next = pile;
-		return (cell);
-	}
+		return (cell->next = pile, cell);
 	while (i < pos)
 	{
 		precedent = current;
@@ -85,7 +69,6 @@ void	ft_put_in_pile(int ac, char **av, t_pile *pile)
 	}
 	check_int(pile);
 }
-
 
 t_pile	*ft_delete_last_cell(t_pile *pile)
 {

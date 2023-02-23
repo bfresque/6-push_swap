@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:22:47 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 17:42:04 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:27:50 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_four_ac(t_pile *pile)
 			ft_reverse_rotate_a(pile);
 		else
 		{
-			ft_push_a(pile);
+			ft_push_a_to_b(pile);
 			i++;
 		}
 	}
@@ -93,7 +93,7 @@ void	ft_four_ac(t_pile *pile)
 	if (pile->pile_a->data > pile->pile_a->next->data)
 		ft_swap_a(pile);
 	while (pile->pile_b)
-		ft_push_b(pile);
+		ft_push_b_to_a(pile);
 }
 
 void	ft_five_ac(t_pile *pile)
@@ -108,16 +108,16 @@ void	ft_five_ac(t_pile *pile)
 		{
 			if (ft_find_top_cell(pile, pile->smallest) > pile->mediane_a)
 				ft_reverse_rotate_a(pile);
-			else// if (ft_find_top_cell(pile, pile->smallest) <= pile->mediane_a)
+			else
 				ft_rotate_a(pile);
 		}
 		else
 		{
-			ft_push_a(pile);
+			ft_push_a_to_b(pile);
 			i++;
 		}
 	}
 	ft_less_four_ac(pile);
 	while (pile->pile_b)
-		ft_push_b(pile);
+		ft_push_b_to_a(pile);
 }

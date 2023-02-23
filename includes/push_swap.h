@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/22 16:01:51 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:38:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,19 @@ void	check_int(t_pile *pile);
 /*********************	ft_find_top_&_data.c	********************/
 void	ft_mediane_value(t_pile *pile);
 void	ft_mediane_b_value(t_pile *pile);
-int	ft_find_from_top(t_pile *pile);
-int	ft_find_from_bottom(t_pile *pile);
-void	chunk_value(t_pile *pile);
-int	ft_find_top_cell(t_pile *pile, int data);
-int	ft_find_bottom_cell(t_pile *pile, int data);
+int		ft_find_from_top(t_pile *pile);
+int		ft_find_from_bottom(t_pile *pile);
+int		ft_find_top_cell(t_pile *pile, int data);
+int		ft_find_bottom_cell(t_pile *pile, int data);
 
 /*********************	ft_find_top_&_data.c	********************/
-void	ft_less_hundred(t_pile *pile);
+void	ft_for_hundred(t_pile *pile);
+
+/****************	hundred_argc.c	*****************/
+void	find_near_less(t_pile *pile);
+void	push_near(t_pile *pile);
+void	ft_for_hundred(t_pile *pile);
+
 
 /*********************	init_add_pile.c	********************/
 t_pile	*ft_new_cell(long data);
@@ -88,8 +93,8 @@ void	ft_print_pile(t_pile *pile); //suppr
 void	printpiles(t_pile *pile); //suppr
 
 /*********************	push.c	********************/
-void	ft_push_a(t_pile *pile);
-void	ft_push_b(t_pile *pile);
+void	ft_push_a_to_b(t_pile *pile);
+void	ft_push_b_to_a(t_pile *pile);
 void	ft_ss(t_pile *pile);
 
 /*********************	rotate_inv.c	********************/
@@ -105,6 +110,22 @@ void	ft_rr(t_pile *pile);
 /*********************	swap.c	********************/
 void	ft_swap_a(t_pile *pile);
 void	ft_swap_b(t_pile *pile);
+
+/****************	utils_hundred_argc.c	*****************/
+int		ft_find_in_b(t_pile *pile, int data);
+void	ft_minus(t_pile *pile, int position_top, int data_top);
+void	ft_plus(t_pile *pile, int position_bottom, int data_bottom);
+void	push_near_utils_one(t_pile *pile, int highest_in_b);
+void	push_near_utils_two(t_pile *pile, int highest_in_b);
+
+/*********************	utils_two.c	********************/
+void	ft_mediane_value(t_pile *pile);
+void	ft_mediane_b_value(t_pile *pile);
+void	ft_free_pile(t_pile *pile);
+void	chunk_value(t_pile *pile);
+void	chunk_value_two(t_pile *pile);
+
+
 
 /*********************	utils.c	********************/
 int		ft_pile_size(t_pile *pile);

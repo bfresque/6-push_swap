@@ -1,49 +1,42 @@
-typedef struct s_pile
+void	ft_nb_ac_for_fonction(t_pile *pile, int ac)
 {
-	long			data;
-	struct s_pile	*next;
-	struct s_pile	*pile_a;
-	struct s_pile	*pile_b;
-}				t_pile;
-
-void	ft_put_in_pile(int ac, char **av, t_pile *pile)
-{
-	int		i;
-	int		j;
-	long	cur;
-
-	i = 1;
-	j = 0;
-	cur = 0;
-	while (i < ac)
+	if (ac < 5)
+		ft_less_four_ac(pile);
+	if (ac == 5)
+		ft_four_ac(pile);
+	if (ac == 6)
+		ft_five_ac(pile);
+	if (ac > 6 && ac < 102)
 	{
-		cur = ft_atoi(av[i]);
-		pile->pile_a = ft_add_at_pile(pile->pile_a, cur, j);
-		i++;
-		j++;
+		chunk_value(pile);
+		ft_for_hundred(pile);
 	}
-	check_int(pile);
-}
-
-long	ft_last_cell(t_pile *pile)
-{
-	if (pile == NULL)
-		return (36);
-	while (pile->next != NULL)
+	if (ac > 101 && ac < 502)
 	{
-		pile = pile->next;
+		chunk_value_two(pile);
+		ft_for_hundred(pile);
 	}
-	return (pile->data);
 }
-
 
 int	main(int ac, char **av)
 {
 	t_pile	pile;
 
+	pile.pile_b = NULL;
 	pile.pile_a = NULL;
-
+	ft_len_argc(ac, av);
+	check_arg(ac, av);
 	ft_put_in_pile(ac, av, &pile);
-
-	printf("%d", ft_last_cell(&pile));
+	if (ft_is_sort(&pile) == 1)
+	{
+		ft_printf ("\nError: Pile all-ready sort\n\n");
+		ft_free_pile(pile.pile_a);
+		exit(-1);
+	}
+	pile.size = ft_pile_size(pile.pile_a);
+	ft_mediane_value(&pile);
+	ft_nb_ac_for_fonction(&pile, ac);
+	
+	ft_free_pile(pile.pile_a);
+	ft_free_pile(pile.pile_b);
 }
