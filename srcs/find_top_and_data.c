@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:53:45 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 10:37:51 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:27:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_find_from_top(t_pile *pile)
 	t_pile	*tmp;
 
 	tmp = pile->pile_a;
-	while ((pile->min_chunk + pile->chunk_size) < pile->biggest)
+	while ((pile->max_chunk - pile->chunk_size) < pile->biggest)
 	{
 		while (tmp)
 		{
@@ -39,7 +39,7 @@ int	ft_find_from_bottom(t_pile *pile)
 	tmp = pile->pile_a;
 	while (tmp->next)
 		tmp = tmp->next;
-	while ((pile->min_chunk + pile->chunk_size) < pile->biggest)
+	while ((pile->max_chunk - pile->chunk_size) < pile->biggest) //(pile->min_chunk + pile->chunk_size)
 	{
 		while (tmp)
 		{

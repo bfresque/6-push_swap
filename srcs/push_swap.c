@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 12:16:45 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:05:17 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,9 @@ void	ft_nb_ac_for_fonction(t_pile *pile, int ac)
 		ft_four_ac(pile);
 	if (ac == 6)
 		ft_five_ac(pile);
-	if (ac > 6 && ac < 102)
+	if (ac > 6)
 	{
 		chunk_value(pile);
-		ft_for_hundred(pile);
-	}
-	if (ac > 101 && ac < 502)
-	{
-		chunk_value_two(pile);
 		ft_for_hundred(pile);
 	}
 }
