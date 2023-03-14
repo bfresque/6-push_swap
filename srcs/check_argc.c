@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:36:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/20 18:00:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:59:17 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_is_sort(t_pile *pile)
 	size = ft_pile_size(pile->pile_a);
 	if (size == 1)
 	{
-		ft_printf("\nError: Pile all-ready sort\n\n");
+		// ft_printf("Error\n");
 		ft_free_pile(pile->pile_a);
 		exit(-1);
 	}
@@ -43,7 +43,7 @@ void	check_nb_argc(int ac)
 {
 	if (ac == 1)
 	{
-		ft_printf("\nError : There is no arguments\n\n");
+		// ft_printf("Error\n");
 		exit(-1);
 	}
 }
@@ -67,7 +67,7 @@ void	check_arg(int ac, char **av)
 			if (ft_isdigit(arg[j]) == 0 && (arg[j] != '-')
 				&& (arg[j] != '"') && (arg[j] != '+'))
 			{
-				ft_printf("\nError : Arguments must be digit\n\n");
+				ft_printf("Error\n");
 				exit(-1);
 			}
 			j++;
@@ -92,7 +92,7 @@ void	check_args(int ac, char **av, int j)
 	{
 		if (ft_strcmp(cur, av[i]) == 0)
 		{
-			ft_printf("\nError : Argument ''%s'' repeats.\n\n", cur);
+			ft_printf("Error\n");
 			exit(-1);
 		}
 		i++;
@@ -109,7 +109,7 @@ void	check_int(t_pile *pile)
 	{
 		if ((temp->data > 2147483647) || (temp->data < -2147483648))
 		{
-			ft_printf ("\nError: Arguments oversize integer\n\n");
+			ft_printf ("Error\n");
 			ft_free_pile(pile->pile_a);
 			exit(-1);
 		}

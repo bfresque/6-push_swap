@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:57:46 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 11:08:44 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:17:58 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	find_near_less(t_pile *pile)
 	long	yes;
 
 	template = pile->pile_a->data;
-	yes = 0;
-	while (yes == 0)
+	yes = -2147483648;
+	while (yes == -2147483648)
 	{
 		tmp = pile->pile_b;
 		template = template - 1;
@@ -31,9 +31,9 @@ void	find_near_less(t_pile *pile)
 			tmp = tmp->next;
 		}
 	}
-	while (ft_find_in_b(pile, yes) != 0)
+	while (ft_find_position_cell(pile->pile_b, yes) != 0)
 	{
-		if (pile->mediane_b >= ft_find_in_b(pile, yes))
+		if (pile->mediane_b >= ft_find_position_cell(pile->pile_b, yes))
 			ft_rotate_b(pile);
 		else
 			ft_reverse_rotate_b(pile);
@@ -48,7 +48,7 @@ void	push_near(t_pile *pile)
 	ft_mediane_b_value(pile);
 	highest_in_b = ft_find_biggest(pile->pile_b);
 	smallest_in_b = ft_find_smallest(pile->pile_b);
-	if (ft_first_cell(pile->pile_a) >= highest_in_b)
+	if (ft_first_cell(pile->pile_a) > highest_in_b)
 		push_near_utils_one(pile, highest_in_b);
 	else if (ft_first_cell(pile->pile_a) < smallest_in_b)
 		push_near_utils_two(pile, highest_in_b);
@@ -69,9 +69,9 @@ void	ft_for_hundred(t_pile *pile)
 	while (pile->pile_a)
 	{
 		data_top = ft_find_from_top(pile);
-		position_top = ft_find_top_cell(pile, data_top);
+		position_top = ft_find_position_cell(pile->pile_a, data_top);
 		data_bottom = ft_find_from_bottom(pile);
-		position_bottom = ft_find_bottom_cell(pile, data_bottom);
+		position_bottom = ft_find_position_cell(pile->pile_a, data_bottom);
 		difference = pile->size - position_bottom;
 		ft_mediane_value(pile);
 		if (position_top <= difference)

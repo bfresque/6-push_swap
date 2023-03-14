@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 16:05:17 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:02:56 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_len_argc(int ac, char **av)
 		len = ft_strlen(av[i]);
 		if (len > 18)
 		{
-			ft_printf ("\nError: Arguments oversize integer\n\n");
+			ft_printf ("Error\n");
 			exit(-1);
 		}
 		i++;
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 	ft_put_in_pile(ac, av, &pile);
 	if (ft_is_sort(&pile) == 1)
 	{
-		ft_printf ("\nError: Pile all-ready sort\n\n");
+		// ft_printf ("\nError: Pile all-ready sort\n\n");
 		ft_free_pile(pile.pile_a);
 		exit(-1);
 	}

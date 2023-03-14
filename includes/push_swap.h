@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/23 12:21:25 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:34:06 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ void	check_int(t_pile *pile);
 /*********************	ft_find_top_and_data.c **********************/
 int		ft_find_from_top(t_pile *pile);
 int		ft_find_from_bottom(t_pile *pile);
-int		ft_find_top_cell(t_pile *pile, int data);
-int		ft_find_bottom_cell(t_pile *pile, int data);
+int		ft_find_position_cell(t_pile *pile, int data);
 
 /*********************	hundred_argc.c ******************************/
 void	find_near_less(t_pile *pile);
@@ -105,7 +104,6 @@ void	ft_swap_b(t_pile *pile);
 void	ft_ss(t_pile *pile);
 
 /*********************	utils_hundred_argc.c ************************/
-int		ft_find_in_b(t_pile *pile, int data);
 void	ft_minus(t_pile *pile, int position_top, int data_top);
 void	ft_plus(t_pile *pile, int position_bottom, int data_bottom);
 void	push_near_utils_one(t_pile *pile, int highest_in_b);

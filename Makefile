@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:15:57 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/23 12:22:55 by bfresque         ###   ########.fr        #
+#    Updated: 2023/03/06 13:40:54 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME_PRINTF = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra #-Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 
 GREEN = \033[92m
 YELLOW = \033[33m
