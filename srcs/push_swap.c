@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:05:43 by bfresque          #+#    #+#             */
-/*   Updated: 2023/03/10 11:02:56 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:06:30 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_len_argc(int ac, char **av)
 		if (len > 18)
 		{
 			ft_printf ("Error\n");
-			exit(-1);
+			exit(0);
 		}
 		i++;
 	}
@@ -54,11 +54,11 @@ int	main(int ac, char **av)
 	ft_len_argc(ac, av);
 	check_arg(ac, av);
 	ft_put_in_pile(ac, av, &pile);
+	check_args(&pile);
 	if (ft_is_sort(&pile) == 1)
 	{
-		// ft_printf ("\nError: Pile all-ready sort\n\n");
 		ft_free_pile(pile.pile_a);
-		exit(-1);
+		exit(0);
 	}
 	pile.size = ft_pile_size(pile.pile_a);
 	ft_mediane_value(&pile);

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:36:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/03/10 10:59:17 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:06:58 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	ft_is_sort(t_pile *pile)
 	size = ft_pile_size(pile->pile_a);
 	if (size == 1)
 	{
-		// ft_printf("Error\n");
 		ft_free_pile(pile->pile_a);
-		exit(-1);
+		exit(0);
 	}
 	while (temp->next)
 	{
@@ -39,13 +38,10 @@ int	ft_is_sort(t_pile *pile)
 		return (0);
 }
 
-void	check_nb_argc(int ac)
+void	check_nb_argc(char **av)
 {
-	if (ac == 1)
-	{
-		// ft_printf("Error\n");
-		exit(-1);
-	}
+	if (av[1] == NULL)
+		exit(0);
 }
 
 void	check_arg(int ac, char **av)
@@ -56,7 +52,7 @@ void	check_arg(int ac, char **av)
 	char	*arg;
 
 	i = 1;
-	check_nb_argc(ac);
+	check_nb_argc(av);
 	while (i < ac)
 	{
 		arg = av[i];
@@ -68,36 +64,35 @@ void	check_arg(int ac, char **av)
 				&& (arg[j] != '"') && (arg[j] != '+'))
 			{
 				ft_printf("Error\n");
-				exit(-1);
+				exit(0);
 			}
 			j++;
 		}
 		i++;
 	}
-	check_args(ac, av, 1);
 }
 
-void	check_args(int ac, char **av, int j)
+void	check_args(t_pile *pile)
 {
-	char	*cur;
-	int		i;
+	t_pile	*temp1;
+	t_pile	*temp2;
 
-	if (j >= ac)
+	temp1 = pile->pile_a;
+	while (temp1)
 	{
-		return ;
-	}
-	i = 0;
-	cur = av[j];
-	while (i < j)
-	{
-		if (ft_strcmp(cur, av[i]) == 0)
+		temp2 = temp1->next;
+		while (temp2)
 		{
-			ft_printf("Error\n");
-			exit(-1);
+			if (temp1->data == temp2->data)
+			{
+				ft_printf("Error\n");
+				ft_free_pile(pile->pile_a);
+				exit(0);
+			}
+			temp2 = temp2->next;
 		}
-		i++;
+		temp1 = temp1->next;
 	}
-	check_args(ac, av, j + 1);
 }
 
 void	check_int(t_pile *pile)
@@ -111,7 +106,7 @@ void	check_int(t_pile *pile)
 		{
 			ft_printf ("Error\n");
 			ft_free_pile(pile->pile_a);
-			exit(-1);
+			exit(0);
 		}
 		temp = temp->next;
 	}

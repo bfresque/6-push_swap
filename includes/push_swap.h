@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:20:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/03/08 17:34:06 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:05:55 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_pile
 /*********************	check_argc.c ********************************/
 int		ft_is_sort(t_pile *pile);
 void	check_arg(int ac, char **av);
-void	check_nb_argc(int ac);
-void	check_args(int ac, char **av, int j);
+void	check_nb_argc(char **av);
+void	check_args(t_pile *pile);
 void	check_int(t_pile *pile);
 
 /*********************	ft_find_top_and_data.c **********************/
